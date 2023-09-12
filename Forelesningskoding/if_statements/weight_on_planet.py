@@ -48,4 +48,4 @@ jordens_tyngdekraft = 9.81
 din_masse = din_vekt / jordens_tyngdekraft
 din_planetVekt = din_masse * planetens_tyngdekraft
 
-print(f"Selv om du veier {din_vekt}kg på jorda, veier du {din_planetVekt:.0f}kg på {planetNavn} med en tyngdekraft på {planetens_tyngdekraft}")
+print(f"Selv om du veier {din_vekt}kg på Jorden, veier du {din_planetVekt:.2f}kg på {str(planetNavn).capitalize()} med en tyngdekraft på {planetens_tyngdekraft}")
