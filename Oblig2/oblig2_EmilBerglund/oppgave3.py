@@ -19,9 +19,9 @@ print(tolken_sine_boker[-1])
 #2: Legg til to av bøkene som ble utgitt etter hans død:
 # = alternative måter
 tolken_sine_boker.append("The Silmarillion")
-#tolken_sine_boker[7] = "The Silmarillion"
+#tolken_sine_boker.insert(7,"The Silmarillion")
 tolken_sine_boker.append("Unfinished Tales")
-#tolken_sine_boker[8] = "Unfinished Tales")
+#tolken_sine_boker.insert(8, "Unfinished Tales")
 
 #3. Gjør endringer på de tre bøkene i Lord of the Rings trilogien og legg til "Lord of the Rings: " foran hver av dem. (hvis dere ikke vet hvilke dette er, vet Google) 
 tolken_sine_boker[2] = "Lord of the Rings: " + tolken_sine_boker[2]
