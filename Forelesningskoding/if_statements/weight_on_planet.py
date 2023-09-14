@@ -1,8 +1,8 @@
 # AUTHOR EMIL BERGLUND #
 '''Hva er din vekt på andre planeter'''
 
-vekt = True
-while vekt:
+vekt = False
+while vekt == False:
     try:
         din_vekt = int(input("Hva er din vekt på jorden i hele kg? "))
         if din_vekt >= 600:
@@ -10,12 +10,12 @@ while vekt:
         elif din_vekt <= 0:
             print("Prøv igjen, du veier ikke ingenting kg!")
         else:
-            vekt = False  # Hvis input er vellykket, avslutt løkken
+            vekt = True  # Hvis input er vellykket, avslutt løkken
     except ValueError:
         print("Du må skrive inn et heltall.")
 
-planeter = True
-while planeter:
+planeter = False
+while planeter == False:
     planeter_i_melkeveien = [
     "merkur", "venus", "jorden",
     "jorda", "mars", "jupiter",
@@ -30,17 +30,17 @@ while planeter:
         print("Skriv inn en planet som faktisk finnes, daahh!")
     else:
         print("OK")
-        planeter = False
+        planeter = True
 
-tyngdekraft = True
-while tyngdekraft:
+tyngdekraft = False
+while tyngdekraft == False:
     try:
         planetens_tyngdekraft = float(input("Hva er planetes tyngdekraft? "))
         if planetens_tyngdekraft <=0:
             print(f"Tyngdekraften {planetens_tyngdekraft} kan ikke være 0 eller lavere")
         else:
             print("OK")
-            tyngdekraft = False
+            tyngdekraft = True
     except ValueError:
         print("Skriv inn tall, ikke bokstaver")
 
