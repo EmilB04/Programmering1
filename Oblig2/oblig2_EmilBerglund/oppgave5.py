@@ -12,19 +12,25 @@ while not antall:
     except ValueError:
         print("Du må skrive inn et gyldig tall.")
 
-
-# Generer antall spillere
+# Generer antall spillere og scoreboard
 spillere = []
+scoreBoard = []
 for spiller in range(1, antallSpillere+1):
     spillere.append("Spiller " + str(spiller))
-print(spillere)
+    scoreBoard.append(0)
 
-# Hver person skal kaste 3 ganger hver
-scoreListe = [[] for _ in range(antallSpillere)] # forenkle dette
+# Funksjon for kasting av dartpiler.
+def kastDart():
+    resultat = []  # Lager en liste for resultatene av tre kast
+    for i in range(3):
+        resultat.append(rd.randrange(0, 60))
+    return resultat
 
-for spiller_index in range(antallSpillere):
-    for kast in range(3):
-        score = rd.randrange(0, 60)
-        scoreListe[spiller_index].append(score)
 
-print(scoreListe)
+for i in range(antallSpillere):
+    kast_resultater = kastDart()  # Henter poengene fra funksjonen
+    for poeng in kast_resultater:
+        scoreBoard[i] += poeng  # Oppdater poengene til den aktuelle spilleren
+
+for i in range(antallSpillere):
+    print(f"{spillere[i]} fikk {scoreBoard[i]} poeng.")
