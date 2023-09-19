@@ -11,10 +11,10 @@ tolken_sine_boker = [
 ]
 
 #1: Skriv ut de to første og de to siste bøkene i listen.
-print(tolken_sine_boker[0])
-print(tolken_sine_boker[1])
-print(tolken_sine_boker[-2])
-print(tolken_sine_boker[-1])
+print(tolken_sine_boker[0]) # Den første
+print(tolken_sine_boker[1]) # Den andre
+print(tolken_sine_boker[-2]) # Den nest siste
+print(tolken_sine_boker[-1]) # Den siste
 
 #2: Legg til to av bøkene som ble utgitt etter hans død:
 # = alternative måter
