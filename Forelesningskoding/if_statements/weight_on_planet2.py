@@ -17,15 +17,30 @@ planetValg = False
 while planetValg == False:
     try:
         planetNummer = int(input("Velg et planetnummer: "))
-        if planetNummer > len(planeter):
-            print("Velg et gyldig tall")
-        elif planetNummer < 0:
+        if planetNummer > len(planeter) or planetNummer <= 0:
             print("Velg et gyldig tall")
         else:
-            planetValg = True
             planetNummer = planetNummer - 1
+            print(f"Du valgte planet: {planeter[planetNummer]}")
+            planetValg = True
     
     except ValueError:
         print("Skriv et tall fra listen")
 
-print(planetNummer)
+vekt = False
+while vekt == False:
+    try:
+        din_vekt = int(input("Hva er din vekt på jorden i hele kg? "))
+        if din_vekt >= 600:
+            print("Du lyver!")
+        elif din_vekt <= 0:
+            print("Prøv igjen, du veier ikke 'ingenting' kg!")
+        else:
+            din_masse = din_vekt / tyngdekraft[2]
+            tyngdekraftNummer = planetNummer
+            vekt_pa_planet = din_masse * tyngdekraft[tyngdekraftNummer]
+            print(f"Din vekt på {planeter[planetNummer]} er {vekt_pa_planet:.2f} kg")
+            vekt = True  # Hvis input er vellykket, avslutt løkken
+
+    except ValueError:
+        print("Du må skrive inn et heltall.")
