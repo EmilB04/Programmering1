@@ -26,11 +26,13 @@ def kastDart():
         resultat.append(rd.randrange(0, 60)) # Tolker "mellom 0 og 60" slik jeg har skrevet det. Skal 60 inkluderes er det bare å endre til 61
     return resultat
 
-
+lst_resultater = []
 for i in range(antallSpillere):
     kast_resultater = kastDart()    # Henter poengene fra funksjonen
+    lst_resultater.append(kast_resultater)  # Tar vare på alle kasteresultatene
     for poeng in kast_resultater:   # Går gjennom listen fra funksjonen
         scoreBoard[i] += poeng      # Oppdater poengene til den aktuelle spilleren
 
 for i in range(antallSpillere):
     print(f"{spillere[i]} fikk {scoreBoard[i]} poeng.")
+    print(lst_resultater[i])
