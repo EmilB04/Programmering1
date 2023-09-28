@@ -3,8 +3,7 @@
 student = {
     "fornavn"      : "Ola",
     "etternavn"    : "Nordmann",
-    "favorittkurs" : "Programmering 1"
-}
+    "favorittkurs" : "Programmering 1"}
 
 # 1: Skriv ut studentens fullstendige navn (fornavn og etternavn).
 print(student["fornavn"], student["etternavn"])
@@ -18,4 +17,5 @@ print(student["favorittkurs"])
 student["alder"] = 18
 print(student["alder"])
 
+#---------------------
 print(student)
