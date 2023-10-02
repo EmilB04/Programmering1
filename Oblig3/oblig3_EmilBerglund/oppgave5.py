@@ -35,7 +35,10 @@ leggTilFilm("The Godfather", 1972, 6.9)
 
 def printFilm(liste):
     for film in liste:
-        print(film["name"],"-", film["year"],"has a rating of", film["rating"])
+        navn = film["name"]
+        år = film["year"]
+        rangering = film["rating"]
+        print(f"{navn} - {år} har en rating på {rangering}")
 printFilm(filmer)
 
 #B) Lag en funksjon som tar en liste med filmer og regner ut 
@@ -62,3 +65,24 @@ def returnerFilmer(liste, årFra, årTil):
             nyFilmer.append(film)
     printFilm(nyFilmer) # Bruker den tidligere funksjonen til å printe ut relevante filmer
 returnerFilmer(filmer, 2010,2014)
+
+
+'''Oppgave 5.3'''
+#A) Opprett en funksjon som tar en liste med filmer, og filnavn som parameter. Benytt denne funksjonen til å skrive alle filmene i lista til en fil du selv velger navnet på f.eks. "movies.txt". Hvis filen allerede eksisterer, skal den overskrives. Legg gjerne til hver film som en egen linje i filen med et fint format. For eksempel: 
+#The Lion King - 1994 has a rating of 8.5 
+
+def listeFraFil(liste, filnavn):
+    with open(filnavn, "w") as fil: # w = write
+        for film in liste:
+            fil.write(f"{film['name']} - {film['year']} har en rating på {film['rating']}\n")
+listeFraFil(filmer, "movies.txt")
+
+#B) Lag en funksjon som leser den samme filen (filnavn som inputparameter til funksjonen) og skriver ut innholdet til terminalen.
+def lesFil(filnavn):
+    with open(filnavn, "r") as fil: # r = read
+        print("--------------------------------------------")
+        for linje in fil:
+            print(linje)
+        print("--------------------------------------------")
+lesFil("movies.txt")
+print
