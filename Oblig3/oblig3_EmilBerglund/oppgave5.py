@@ -85,4 +85,3 @@ def lesFil(filnavn):
             print(linje)
         print("--------------------------------------------")
 lesFil("movies.txt")
-print
