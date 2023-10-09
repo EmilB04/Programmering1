@@ -16,3 +16,17 @@ def beregn_volum(lengde, bredde, høyde):
 beregn_volum(2, 5, 10)
 beregn_volum(1, 3, 2.5)
 beregn_volum(1, 1, 2)
+
+#eller 
+
+while True:
+    try:
+        lengde = float(input("Lengde: "))
+        bredde = float(input("Bredde: "))
+        høyde = float(input("Høyde: "))
+        break
+    except ValueError:
+        print("Du må skrive inn et tall")
+        continue
+
+beregn_volum(lengde, bredde, høyde)
