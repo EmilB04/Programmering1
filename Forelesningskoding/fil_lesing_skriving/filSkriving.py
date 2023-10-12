@@ -1,4 +1,4 @@
-with open ("forelesningskoding/filLesning/textFil.txt", "a") as fil: #append
+with open ("forelesningskoding/fil_lesing_skriving/textFil.txt", "a") as fil: #append
     while True:
         brukerInput = input(": ")
 
