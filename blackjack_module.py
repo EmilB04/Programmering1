@@ -21,8 +21,8 @@ full_deck = {
 
 def get_new_shuffled_deck():
     deck = list(full_deck.keys())
-    rd.shuffle(deck)                # Tilfeldiggjør rekkefølgen på kortene
-    return deck                     # Returnerer en liste med kortene i tilfeldig rekkefølge
+    rd.shuffle(deck)
+    return deck
 
 
 def get_card_value(card):
