@@ -45,7 +45,7 @@ while kjør:
             break
         except ValueError:
             print("Du må skrive inn et tall")
-# Spør brukeren vil prøve igjen
+# Spør om brukeren vil prøve igjen
     while True:
         try:
             en_gang_til = input("Vil du prøve igjen? (ja/nei): ").lower()
