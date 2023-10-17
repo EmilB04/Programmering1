@@ -1,5 +1,15 @@
 # AUTHOR EMIL BERGLUND #
 
+#TODO
+# Change dealer_hand to print out all cards using a for loop. Like this: 
+'''
+- Five of hearts 
+- Six of hearts
+- Three of spades 
+- Four of diamonds 
+'''
+
+
 import blackjack_module as bjm
 
 ''' Functions '''
