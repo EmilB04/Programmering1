@@ -31,8 +31,18 @@ def get_card_value(card):
 
 def calculate_hand_value(hand):
     hand_value = 0
+    aces_count = 0  # Track the number of Aces in the hand
 
     for card in hand:
-        hand_value += get_card_value(card)
+        card_value = get_card_value(card)
+        hand_value += card_value
+
+        if card_value == 11:  # Check if the card is an Ace
+            aces_count += 1
+
+    # Adjust the value of Aces if the hand value is over 21
+    while hand_value > 21 and aces_count > 0:
+        hand_value -= 10  # Change the value of an Ace from 11 to 1
+        aces_count -= 1
 
     return hand_value

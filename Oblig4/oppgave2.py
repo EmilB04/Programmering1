@@ -49,7 +49,9 @@ def userChoice():
             print("\nInvalid input. Try again.")
 
 def stand():
-    print(f"The dealers cards are '{dealer_hand}', with a value of {bjm.calculate_hand_value(dealer_hand)}")
+    fill_hands(player_amount=0, dealer_amount=1)
+    print(f"These are the dealers cards with a total value of {bjm.calculate_hand_value(dealer_hand)}: ")
+    print_hand(dealer_hand)
 
     if bjm.calculate_hand_value(dealer_hand) > 21:
         print("\n-------------------------------------")
@@ -73,7 +75,8 @@ def stand():
 
 def hit():
     fill_hands(player_amount=1, dealer_amount=0)
-    print(f"You have {player_hand}, with a total value of {bjm.calculate_hand_value(player_hand)}.")
+    print(f"These are your cards, with a total value of {bjm.calculate_hand_value(player_hand)}: ")
+    print_hand(player_hand)
     if bjm.calculate_hand_value(player_hand) > 21:
         print("\n-------------------------------------")
         print("-- You went bust. The dealer wins! --")
@@ -91,6 +94,12 @@ def retry():
         else:
             print("\nInvalid input. Try again.")
 
+def print_hand(hand):
+    for card in hand:
+        print(f"- {card}")
+
+def print_chips():
+    print(f"You have {player_chips} chips left.")
 
 ''' Main'''
 game = True
@@ -104,9 +113,16 @@ while game:
     # Fill the hands
     fill_hands(player_amount=2, dealer_amount=2)
 
+    # Variable for chips
+    player_chips = 5
+
     # Print the hands
-    print(f"The cards have been dealt. You have '{player_hand[0]}' and '{player_hand[1]}', with a total value of {bjm.calculate_hand_value(player_hand)}.")
+    print(f"The cards have been dealt. These are your cards, with a total value of {bjm.calculate_hand_value(player_hand)}: ")
+    print_hand(player_hand)
     print(f"The dealer's visible card is '{dealer_hand[0]}', with a value of {bjm.get_card_value(dealer_hand[0])}.")
+
+    # print the chips
+    print_chips()
 
     # Check for blackjack. If not blackjack, ask for user choice
     # If the user chooses to hit, they get a new card
