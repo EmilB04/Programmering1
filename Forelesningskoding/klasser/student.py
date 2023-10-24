@@ -10,12 +10,6 @@ class Student:
     # Dette er en metode
     def getFullName(self):
         return self.first_name + " " + self.last_name
-    
-    def getTotalCredits(self):
-        totalCredits = 0
-        for course in self.courses:
-            totalCredits += course.credits
-        return totalCredits
 
     def enroll_in_course(self, course):
         self.courses.append(course)

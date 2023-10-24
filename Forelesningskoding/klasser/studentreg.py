@@ -10,4 +10,4 @@ design = Course("Design", "ITF32789", 10)
 emil_berglund.enroll_in_course(programmering1)
 emil_berglund.enroll_in_course(webuvikling)
 
-print(emil_berglund.getTotalCredits())
+print("Studentpoeng hentet fra funksjon:", coursefunction.calculate_total_credits(emil_berglund.courses))
