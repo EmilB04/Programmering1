@@ -1,14 +1,9 @@
 # AUTHOR EMIL BERGLUND #
 
 #TODO
-# Change dealer_hand to print out all cards using a for loop. Like this: 
-'''
-- Five of hearts 
-- Six of hearts
-- Three of spades 
-- Four of diamonds 
-'''
-
+# Er det spilllogikken riktig? Skal dealeren ha en sjanse hvis spilleren får utdelt blackjack?
+# Legg til chipps
+# Legg funksjoner i en egen fil
 
 import blackjack_module as bjm
 
@@ -81,6 +76,10 @@ def hit():
         print("\n-------------------------------------")
         print("-- You went bust. The dealer wins! --")
         print("-------------------------------------\n")
+    elif bjm.calculate_hand_value(player_hand) == 21:
+        print("\n---------------------------------")
+        print("-- You got blackjack! You win! --")
+        print("---------------------------------\n")
     else:
         return userChoice()
 
