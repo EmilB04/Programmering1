@@ -11,3 +11,5 @@ emil_berglund.enroll_in_course(programmering1)
 emil_berglund.enroll_in_course(webuvikling)
 
 print("Studentpoeng hentet fra funksjon:", coursefunction.calculate_total_credits(emil_berglund.courses))
+
+print(coursefunction.calculate_total_credits.__doc__)

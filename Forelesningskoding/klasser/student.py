@@ -9,6 +9,10 @@ class Student:
     
     # Dette er en metode
     def getFullName(self):
+        """
+        Returnerer fullt navn
+        :return: fornavn + etternavn
+        """
         return self.first_name + " " + self.last_name
 
     def enroll_in_course(self, course):
