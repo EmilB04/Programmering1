@@ -12,16 +12,25 @@ class Format:
 
 ''' Functions '''
 def fill_hands(player_amount, dealer_amount):
-    # Fill the player's hand and remove two cards from the deck
+    '''
+    Fill the player's hand and remove two cards from the deck
+    :param player_amount: int
+    :param dealer_amount: int
+    '''
     for i in range(player_amount):
         player_hand.append(shuffled_deck.pop())
     for i in range(dealer_amount):
         dealer_hand.append(shuffled_deck.pop())
 
 def check_for_blackjack(hand):
-    # Check if the player got blackjack
-    # If the player got blackjack, the game is over --> natural blackjack
-    # If the player didn't get blackjack, ask for user choice
+    '''
+    Check if the player got blackjack
+    If the player got blackjack, the game is over --> natural blackjack
+    If the player didn't get blackjack, ask for user choice
+    :param hand: list
+    :return: string
+    :return: function
+    '''
     if bjm.calculate_hand_value(hand) == 21:
         print("---------------------------------")
         print("-- You got blackjack! You win! --")
@@ -31,9 +40,13 @@ def check_for_blackjack(hand):
         return userChoice()
 
 def userChoice():
-    # Ask the user if they want to hit or stand
-    # If the user chooses to hit, they get a new card
-    # If the user chooses to stand, the dealer plays
+    '''
+    Ask the user if they want to hit or stand
+    If the user chooses to hit, they get a new card
+    If the user chooses to stand, the dealer plays
+    :return: function
+    :return: function
+    '''
     while True:
         choice = input(f"{Format.underline}Do you want to hit or stand? (h/s):{Format.end} ").lower()
         if choice == "h":
@@ -46,6 +59,10 @@ def userChoice():
             print("Invalid input. Try again.\n")
 
 def stand():
+    '''
+    The dealer plays
+    :return: string
+    '''
     print("The dealer will now play. ")
     while bjm.calculate_hand_value(dealer_hand) < bjm.calculate_hand_value(player_hand):
         fill_hands(player_amount=0, dealer_amount=1)
@@ -76,6 +93,11 @@ def stand():
         print("\nSomething went wrong. Please try again.")
 
 def hit():
+    '''
+    The player gets a new card
+    :return: string
+    :return: function
+    '''
     fill_hands(player_amount=1, dealer_amount=0)
     new_card = player_hand[-1]
     print(f"You have been dealt one new card: '{new_card}'")
@@ -95,6 +117,11 @@ def hit():
         return userChoice()
 
 def retry(player_chips):
+    '''
+    Ask the user if they want to play again
+    :param player_chips: int
+    :return: bool
+    '''
     while True:
         choice = input(f"{Format.underline}Do you want to play again? (y/n):{Format.end} ").lower()
         if choice == "y":
@@ -109,11 +136,23 @@ def retry(player_chips):
             print("\nInvalid input. Try again.")
 
 def print_hand(hand):
+    '''
+    Print the cards in the hand
+    :param hand: list
+    '''
     for card in hand:
         print(f"- {card}")
 
+# Create a variable for the player's chips
+# Needs to be oustide of the loop to not reset every time
+player_chips = 5
 
 def input_check_chips(player_chips):
+    '''
+    Ask the user how many chips they want to bet
+    :param player_chips: int
+    :return: int
+    '''
     while True:
         try:
             bet = int(input(f"\n{Format.underline}You currently have {player_chips} chip(s). How many do you want to bet?{Format.end} "))
@@ -127,8 +166,14 @@ def input_check_chips(player_chips):
         except ValueError:
             print("Invalid input. Try again.")
 
-player_chips = 5
 def update_chips(player_chips, bet, result):
+    '''
+    Update the player's chips according to the result
+    :param player_chips: int
+    :param bet: int
+    :param result: string
+    :return: int
+    '''
     if result == "blackjack":
         return player_chips + (bet * 2)
     elif result == "win":
