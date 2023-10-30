@@ -1,8 +1,4 @@
 # AUTHOR EMIL BERGLUND #
-
-#TODO
-# Legg funksjoner i en egen fil
-
 import blackjack_module as bjm
 
 class Format: # Only for decoration in the terminal
@@ -204,8 +200,10 @@ while game:
     print_hand(player_hand)
     print(f"The dealer's visible card is '{dealer_hand[0]}', with a value of {bjm.get_card_value(dealer_hand[0])}.\n")
 
+    # Check for blackjack. 
+    #   If blackjack, the game is over --> natural blackjack
+    #   If not blackjack, ask for user choice
 
-    # Check for blackjack. If not blackjack, ask for user choice
     # If the user chooses to hit, they get a new card
     # If the user chooses to stand, the dealer plays
     result = check_for_blackjack(player_hand)
