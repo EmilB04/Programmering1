@@ -1,5 +1,4 @@
 # AUTHOR EMIL BERGLUND #
-import blackjack_module as bjm
 
 class Format: # Only for decoration in the terminal
     bold = '\033[1m'
@@ -7,6 +6,63 @@ class Format: # Only for decoration in the terminal
     end = '\033[0m'
 
 ''' Functions '''
+import random as rd
+
+full_deck = {
+    "Two of clubs": 2, "Three of clubs": 3, "Four of clubs": 4, "Five ofclubs": 5, "Six of clubs": 6,
+    "Seven of clubs": 7, "Eight of clubs": 8, "Nine of clubs": 9, "Ten of clubs": 10,
+    "Jack of clubs": 10, "Queen of clubs": 10, "King of clubs": 10, "Ace of clubs": 11,
+
+    "Two of diamonds": 2, "Three of diamonds": 3, "Four of diamonds": 4, "Five of diamonds": 5,
+    "Six of diamonds": 6, "Seven of diamonds": 7, "Eight of diamonds": 8, "Nine of diamonds": 9,
+    "Ten of diamonds": 10, "Jack of diamonds": 10, "Queen of diamonds": 10, "King of diamonds": 10,"Ace of diamonds": 11, 
+
+    "Two of hearts": 2, "Three of hearts": 3, "Four of hearts": 4, "Five of hearts": 5, 
+    "Six of hearts": 6, "Seven of hearts": 7, "Eight of hearts": 8, "Nine of hearts": 9, "Ten of hearts": 10,
+    "Jack of hearts": 10, "Queen of hearts": 10, "King of hearts": 10, "Ace of hearts": 11,
+
+    "Two of spades": 2, "Three of spades": 3, "Four of spades": 4, "Five of spades": 5, "Six of spades": 6,
+    "Seven of spades": 7, "Eight of spades": 8, "Nine of spades": 9, "Ten of spades": 10,
+    "Jack of spades": 10, "Queen of spades": 10, "King of spades": 10, "Ace of spades": 11,
+}
+
+def get_new_shuffled_deck():
+    '''
+    Create a new shuffled deck of cards
+    :return: list
+    '''
+    deck = list(full_deck.keys())
+    rd.shuffle(deck)
+    return deck
+
+def get_card_value(card):
+    '''
+    Get the value of a card
+    :param card: string
+    :return: int
+    '''
+    return full_deck[card]
+
+def calculate_hand_value(hand):
+    '''
+    Calculate the value of a hand
+    :param hand: list
+    :return: int
+    '''
+    hand_value = 0
+
+    for card in hand:
+        hand_value += get_card_value(card)    # list
+
+    if hand_value > 21: # Check if the hand is larger han 21
+        for card in hand:
+            # if card is an ace check if it should be 1 or 11 points
+            if card == "Ace of clubs" or card == "Ace of diamonds" or card == "Ace of hearts" or card == "Ace of spades":
+                hand_value -= 10
+                if hand_value <= 21:
+                    break
+    return hand_value
+
 def fill_hands(player_amount, dealer_amount):
     '''
     Fill the player's hand and remove two cards from the deck
@@ -27,7 +83,7 @@ def check_for_blackjack(hand):
     :return: string
     :return: function
     '''
-    if bjm.calculate_hand_value(hand) == 21:
+    if calculate_hand_value(hand) == 21:
         print("---------------------------------")
         print("-- You got blackjack! You win! --")
         print("---------------------------------\n")
@@ -60,27 +116,27 @@ def stand():
     :return: string
     '''
     print("The dealer will now play. ")
-    while bjm.calculate_hand_value(dealer_hand) < bjm.calculate_hand_value(player_hand):
+    while calculate_hand_value(dealer_hand) < calculate_hand_value(player_hand):
         fill_hands(player_amount=0, dealer_amount=1)
-    print(f"These are the dealers cards with a total value of {bjm.calculate_hand_value(dealer_hand)}: ")
+    print(f"These are the dealers cards with a total value of {calculate_hand_value(dealer_hand)}: ")
     print_hand(dealer_hand)
 
-    if bjm.calculate_hand_value(dealer_hand) > 21:
+    if calculate_hand_value(dealer_hand) > 21:
         print("-------------------------------------")
         print("-- The dealer went bust. You win! --")
         print("-------------------------------------\n")
         return "win"
-    elif bjm.calculate_hand_value(player_hand) > bjm.calculate_hand_value(dealer_hand):
+    elif calculate_hand_value(player_hand) > calculate_hand_value(dealer_hand):
         print("-----------------------------------")
         print("-- You beat the dealer! You win! --")
         print("-----------------------------------\n")
         return "win"
-    elif bjm.calculate_hand_value(dealer_hand) > bjm.calculate_hand_value(player_hand):
+    elif calculate_hand_value(dealer_hand) > calculate_hand_value(player_hand):
         print("-----------------------------------")
         print("-- The dealer beat you! You lose! --")
         print("-----------------------------------\n")
         return "lose"
-    elif bjm.calculate_hand_value(dealer_hand) == bjm.calculate_hand_value(player_hand):
+    elif calculate_hand_value(dealer_hand) == calculate_hand_value(player_hand):
         print("-----------------------------------")
         print("-- You tied with the dealer! --")
         print("-----------------------------------\n")
@@ -98,13 +154,13 @@ def hit():
     new_card = player_hand[-1]
     print(f"You have been dealt one new card: '{new_card}'")
     print_hand(player_hand)
-    print(f"{Format.bold}The total value of your hand is {bjm.calculate_hand_value(player_hand)}.{Format.end}\n ")
-    if bjm.calculate_hand_value(player_hand) > 21:
+    print(f"{Format.bold}The total value of your hand is {calculate_hand_value(player_hand)}.{Format.end}\n ")
+    if calculate_hand_value(player_hand) > 21:
         print("-------------------------------------")
         print("-- You went bust. The dealer wins! --")
         print("-------------------------------------\n")
         return "lose"
-    elif bjm.calculate_hand_value(player_hand) == 21:
+    elif calculate_hand_value(player_hand) == 21:
         print("---------------------------------")
         print("-- You got blackjack! You win! --")
         print("---------------------------------\n")
@@ -184,7 +240,7 @@ def update_chips(player_chips, bet, result):
 game = True
 while game:
     # Create a deck of cards
-    shuffled_deck = bjm.get_new_shuffled_deck()
+    shuffled_deck = get_new_shuffled_deck()
 
     # Create a hand for the player and the dealer
     player_hand = []; dealer_hand = []
@@ -196,9 +252,9 @@ while game:
     bet = input_check_chips(player_chips)
 
     # Print the hands
-    print(f"\nThe cards have been dealt. These are your cards, with a total value of {bjm.calculate_hand_value(player_hand)}: ")
+    print(f"\nThe cards have been dealt. These are your cards, with a total value of {calculate_hand_value(player_hand)}: ")
     print_hand(player_hand)
-    print(f"The dealer's visible card is '{dealer_hand[0]}', with a value of {bjm.get_card_value(dealer_hand[0])}.\n")
+    print(f"The dealer's visible card is '{dealer_hand[0]}', with a value of {get_card_value(dealer_hand[0])}.\n")
 
     # Check for blackjack. 
     #   If blackjack, the game is over --> natural blackjack
