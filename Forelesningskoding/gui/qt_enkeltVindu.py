@@ -13,7 +13,7 @@ class Vindu(QWidget):
 
         
         label_img = QLabel()
-        pixmap = QPixmap('squarePants.jpg')
+        pixmap = QPixmap('sqPants.png')
         label_img.setPixmap(pixmap) 
 
         layout = QVBoxLayout()
