@@ -4,7 +4,7 @@ import sys
 app = QApplication(sys.argv) # ALLTID MED
 
 vindu = QWidget()
-vindu.setWindowTitle("Hello World!")
+vindu.setWindowTitle("Hello World!") # Tittel på vinduet
 vindu.resize(300, 250)
 vindu.move(600, 300) # Begynner øverst i venstre hjørne (x, y)
 
