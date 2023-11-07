@@ -10,8 +10,8 @@ car_register = {
         "new": False,
         "km": 163_000
     },
-    "pugeot408": {
-        "brand": "Pugeot",
+    "peugeot408": {
+        "brand": "Peugeot",
         "model": "408",
         "price": 330_000,
         "year": 2019,
@@ -36,8 +36,13 @@ RENT_NEW_CAR__FEE = 1000
 
 
 def print_car_information(car):
-    # Oppgave 3.1
-    pass
+    for info in car:
+        print(f"Brand: {car['brand']}")
+        print(f"Model: {car['model']}")
+        print(f"Price: {car['price']}")
+        print(f"Manufactured: {car['year']}-{car['month']}")
+        print(f"Condition: {'New' if car['new'] == True else 'Used'}")
+        print()
 
 
 def create_car(car_register, brand, model, price, year, month, new, km):
