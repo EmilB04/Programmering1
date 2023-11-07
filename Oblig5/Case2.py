@@ -67,8 +67,9 @@ def get_car_age(car):
 
 
 def next_eu_control(car):
-    # Oppgave 3.4
-    pass
+    carYear = car['year']; carMonth = car['month']; carDay = 1
+    next_control = carYear + 2
+    return f"{next_control}-{carMonth}-{carDay}"
 
 
 def rent_car_monthly_price(car):
