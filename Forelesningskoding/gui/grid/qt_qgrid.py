@@ -19,7 +19,8 @@ class HovedVindu(QWidget):
         minKnapp.setText("Dette er en knapp")
         layout.addWidget(minKnapp, 0,1)
         
-        min_inputlinje = QLineEdit("Enkel linke. Dette er standardtekst")
+        min_inputlinje = QLineEdit()
+        min_inputlinje.setPlaceholderText("Enkel linke. Dette er standardtekst")
         layout.addWidget(min_inputlinje, 0,2)
         
         min_radioKnapp = QRadioButton("Dette er en radioknapp")
@@ -34,7 +35,8 @@ class HovedVindu(QWidget):
         min_combobox.setCurrentIndex(0) # Velger hvor den skal starte
         layout.addWidget(min_combobox, 1,2)
         
-        min_tekst = QTextEdit("Dette er en tekstboks på flere linjer")
+        min_tekst = QTextEdit()
+        min_tekst.setPlaceholderText("Dette er en tekstboks")
         layout.addWidget(min_tekst, 2,0)
         
         min_beskjed = QMessageBox()
