@@ -30,9 +30,7 @@ car_register = {
     },
 }
 
-NEW_CAR_REGISTRATION_FEE = 8745
-RENT_CAR_PERCENTAGE = 0.4
-RENT_NEW_CAR__FEE = 1000
+
 
 
 def print_car_information(car):
@@ -71,15 +69,39 @@ def next_eu_control(car):
     next_control = carYear + 2
     return f"{next_control}-{carMonth}-{carDay}"
 
+NEW_CAR_REGISTRATION_FEE = 8745
+RENT_CAR_PERCENTAGE = 0.4
+RENT_NEW_CAR__FEE = 1000
 
 def rent_car_monthly_price(car):
-    # Oppgave 3.5
-    pass
+    carPrice = car['price']
+    yearlyCarPrice = carPrice * RENT_CAR_PERCENTAGE
+    monthlyCarPrice = yearlyCarPrice / 12
+    
+    if is_new(car) == True:
+        monthlyCarPrice += RENT_NEW_CAR__FEE
+    return f"{monthlyCarPrice:.2f}"
 
 
 def calculate_total_price(car):
-    # Oppgave 3.6
-    pass
+    NEW_CAR_FEE = 10_783
+    USED_CAR_FEE = {
+        "0-3"   : 6681,
+        "4-11"  : 4034,
+        "12-29" : 1729,
+        "30+"   : 0
+    }
+    if car == is_new(car):
+        total_price = car['price'] + NEW_CAR_FEE
+    elif get_car_age(car) <= 3:
+        total_price = car['price'] + USED_CAR_FEE['0-3']
+    elif get_car_age(car) <= 11:
+        total_price = car['price'] + USED_CAR_FEE['4-11']
+    elif get_car_age(car) <= 29:
+        total_price = car['price'] + USED_CAR_FEE['12-29']
+    else:
+        total_price = car['price'] + USED_CAR_FEE['30+']
+    return total_price
 
 
 def is_new(car):
@@ -89,14 +111,16 @@ def is_new(car):
 if __name__ == '__main__':
     create_car(car_register, "Volvo", "V90", 850_000, 2021, 12, True, 0)
     
+    print()
     toyota = car_register['toyotaBZ4X']
     print_car_information(toyota)
-    print(f"\nThe total price for this {toyota['brand']} {toyota['model']} is {calculate_total_price(toyota)}kr.")
+    print(f"The total price for this {toyota['brand']} {toyota['model']} is {calculate_total_price(toyota)}kr.")
     print(f"Next EU-control for the {toyota['brand']} {toyota['model']} is {next_eu_control(toyota)}")
     print(f"If you want to rent the {toyota['brand']} {toyota['model']} the monthly fee will be {rent_car_monthly_price(toyota)}.")
     
+    print()
     audi = car_register['audiRS3']
     print_car_information(audi)
-    print(f"\nThe total price for this {audi['brand']} {audi['model']} is {calculate_total_price(audi)}kr.")
+    print(f"The total price for this {audi['brand']} {audi['model']} is {calculate_total_price(audi)}kr.")
     print(f"Next EU-control for the {audi['brand']} {audi['model']} is {next_eu_control(audi)}")
     print(f"If you want to rent the {audi['brand']} {audi['model']} the monthly fee will be {rent_car_monthly_price(audi)}kr.")
