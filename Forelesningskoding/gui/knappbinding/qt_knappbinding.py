@@ -9,10 +9,17 @@ class HovedVindu(QWidget):
         self.setGeometry(200, 200, 600, 400)
         
         
+        layout = QVBoxLayout()
+        self.setLayout(layout)
         
-        
-        self.show()
+        knapp = QPushButton("Trykk her")
+        knapp.clicked.connect(self.knapp_trykket) # Kobler den til funksjonen
+        layout.addWidget(knapp)
 
+        self.show()
+        
+    def knapp_trykket(self):
+        print("Knappen ble trykket!")
 
 
 
