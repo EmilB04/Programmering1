@@ -46,9 +46,7 @@ ws.add_number_of_ware_to_shopping_cart("hdmi_cable", all_wares["hdmi_cable"], sh
 print()
 print("The shopping cart: ", end="")
 for ware_key, amount in shopping_cart.items():
-    print(f"\n{all_wares[ware_key]['name']} ({amount}), ", end="")
-print()
-print()
+    print(f"\n{all_wares[ware_key]['name']} - {amount} pcs. ")
 
 '''Prøv å få til dette under'''
 
