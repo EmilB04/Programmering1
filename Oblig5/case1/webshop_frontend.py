@@ -44,15 +44,21 @@ ws.add_number_of_ware_to_shopping_cart("hdmi_cable", all_wares["hdmi_cable"], sh
 
 # skriver ut handlevognen
 print()
-print(f"The shopping cart: {shopping_cart}")
+print("The shopping cart: ", end="")
+for ware_key, amount in shopping_cart.items():
+    print(f"\n{all_wares[ware_key]['name']} ({amount}), ", end="")
 print()
+print()
+
+'''Prøv å få til dette under'''
+
 
 # Oppretter en lommebok som inneholder 10000 kr
 wallet = Wallet(10000)
 
 # Forsøker å kjøpe varene i handlevognen
-ws.buy_shopping_cart('''Parameterne blir definert i oppgaven''')
+#ws.buy_shopping_cart('''Parameterne blir definert i oppgaven''')
 print()
 
 # Skriver ut mengden penger i lommeboka etter kjøpet
-print(f"The amount in the wallet after the purchase: {wallet.get_amount()}")
+#print(f"The amount in the wallet after the purchase: {wallet.get_amount()}")
