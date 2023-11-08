@@ -124,3 +124,7 @@ if __name__ == '__main__':
     print(f"The total price for this {audi['brand']} {audi['model']} is {calculate_total_price(audi)}kr.")
     print(f"Next EU-control for the {audi['brand']} {audi['model']} is {next_eu_control(audi)}")
     print(f"If you want to rent the {audi['brand']} {audi['model']} the monthly fee will be {rent_car_monthly_price(audi)}kr.")
+    
+    
+# Oppgave 7
+    # HER
