@@ -4,9 +4,19 @@
 
 def print_ware_information(ware):
     '''Funksjonsbeskrivelse: Printer ut informasjon om en spesifisert vare.'''
+    print(f"Name: {ware['name']}")
+    print(f"Price: {ware['price']}")
+    print(f"Number in stock: {ware['number_in_stock']}")
+    print(f"Description: {ware['description']}")
 
 def calculate_average_ware_rating(ware):
     ''''Returnerer den gjennomsnittlige ratingen for en spesifisert vare.'''
+    ratings = ware['ratings']
+    total_rating = 0
+    for rating in ratings:
+        total_rating += rating
+        average_rating = total_rating / len(ratings)
+    return average_rating
 
 def get_all_wares_in_stock(all_wares):
     '''Returnerer en dictionary med alle varer som er på lager.'''
