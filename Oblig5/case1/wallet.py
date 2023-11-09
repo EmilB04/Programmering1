@@ -4,6 +4,6 @@ class Wallet:
         
     def get_amount(self):
         return self.amount
-        
+    
     def subtract_amount(self, value):
         self.amount -= value

@@ -65,11 +65,15 @@ def can_afford_shopping_cart(shopping_cart_price, wallet):
 
 
 # Prøv å få til denne
-
 def buy_shopping_cart(shopping_cart, all_wares, tax, wallet):
     # Kjøper varene i en handlevogn. Parameterene defineres i oppgaven.
-    shopping_cart_price = calculate_shopping_cart_price(shopping_cart, all_wares, tax)
-    # Finn totalprisen av handlevognen og trekk i fra wallet.
+    shopping_cart_value = calculate_shopping_cart_price(shopping_cart, all_wares, tax)
+    # Finn totalprisen av handlevognen og trekk fra i wallet.
+    total_subtraction = wallet.get_amount() - shopping_cart_value
+    # Oppdaterer lommeboken
+    wallet.subtract_amount(total_subtraction)
+    # Tømmer handlevognen etter kjøp
+    clear_shopping_cart(shopping_cart)
 
 #------------------------------------------
 # Predefinerte funksjoner

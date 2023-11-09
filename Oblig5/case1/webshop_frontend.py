@@ -1,5 +1,5 @@
 import webshop as ws
-from wallet import Wallet
+from wallet import *
 
 all_wares = {
     "amd_processor": {
@@ -55,8 +55,8 @@ for ware_key, amount in shopping_cart.items():
 wallet = Wallet(10000)
 
 # Forsøker å kjøpe varene i handlevognen
-ws.buy_shopping_cart()
+ws.buy_shopping_cart(shopping_cart, all_wares, 1.25, wallet)
 print()
 
 # Skriver ut mengden penger i lommeboka etter kjøpet
-#print(f"The amount in the wallet after the purchase: {wallet.get_amount()}")
+print(f"The amount in the wallet after the purchase: {wallet.get_amount()} kr.")
