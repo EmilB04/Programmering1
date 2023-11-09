@@ -47,8 +47,7 @@ print()
 print("The shopping cart: ", end="")
 for ware_key, amount in shopping_cart.items():
     print(f"\n{all_wares[ware_key]['name']} - {amount} pcs. ")
-
-'''Prøv å få til dette under'''
+print(f"\nTotal price of the shopping cart: {ws.calculate_shopping_cart_price(shopping_cart, all_wares, 1.25)} kr.")
 
 
 # Oppretter en lommebok som inneholder 10000 kr

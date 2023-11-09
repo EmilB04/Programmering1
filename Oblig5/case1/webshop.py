@@ -2,6 +2,9 @@
 #Oppgaver
 #------------------------------------------
 
+# TODO!
+# Fix wallet funksjon - Amount left in wallet
+
 def print_ware_information(ware):
     '''Funksjonsbeskrivelse: Printer ut informasjon om en spesifisert vare.'''
     print(f"\nName: {ware['name']}")
@@ -64,9 +67,8 @@ def can_afford_shopping_cart(shopping_cart_price, wallet):
         return False    # Har ikke råd
 
 
-# Prøv å få til denne
+
 def buy_shopping_cart(shopping_cart, all_wares, tax, wallet):
-    # Kjøper varene i en handlevogn. Parameterene defineres i oppgaven.
     shopping_cart_value = calculate_shopping_cart_price(shopping_cart, all_wares, tax)
     # Finn totalprisen av handlevognen og trekk fra i wallet.
     total_subtraction = wallet.get_amount() - shopping_cart_value
