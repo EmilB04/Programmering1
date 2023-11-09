@@ -55,7 +55,7 @@ for ware_key, amount in shopping_cart.items():
 wallet = Wallet(10000)
 
 # Forsøker å kjøpe varene i handlevognen
-#ws.buy_shopping_cart('''Parameterne blir definert i oppgaven''')
+ws.buy_shopping_cart()
 print()
 
 # Skriver ut mengden penger i lommeboka etter kjøpet
