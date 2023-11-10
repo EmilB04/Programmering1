@@ -128,3 +128,72 @@ if __name__ == '__main__':
     
 # Oppgave 7
     # HER
+    
+    
+class Car:
+    def __init__(self, brand, model, price, year, month, new, km):
+        self.brand = brand
+        self.model = model
+        self.price = price
+        self.year = year
+        self.month = month
+        self.new = new
+        self.km = km
+
+    def print_car_information(self):
+        print(f"Brand: {self.brand}")
+        print(f"Model: {self.model}")
+        print(f"Price: {self.price}")
+        print(f"Manufactured: {self.year}-{self.month}")
+        print(f"Condition: {'New' if self.new == True else 'Used'}")
+        print()
+
+    def get_car_age(self):
+        current_year = date.today().year
+        years_old = current_year - self.year
+        return years_old
+
+    def next_eu_control(self):
+        car_day = 1
+        next_control = self.year + 2
+        return f"{next_control}-{self.month}-{car_day}"
+
+    def rent_car_monthly_price(self):
+        yearly_car_price = self.price * 0.4
+        monthly_car_price = yearly_car_price / 12
+
+        if self.is_new():
+            monthly_car_price += 1000
+        return f"{monthly_car_price:.2f}"
+
+    def calculate_total_price(self):
+        new_car_fee = 10783
+        used_car_fee = {
+            "0-3": 6681,
+            "4-11": 4034,
+            "12-29": 1729,
+            "30+": 0
+        }
+        if self.is_new():
+            total_price = self.price + new_car_fee
+        elif self.get_car_age() <= 3:
+            total_price = self.price + used_car_fee['0-3']
+        elif self.get_car_age() <= 11:
+            total_price = self.price + used_car_fee['4-11']
+        elif self.get_car_age() <= 29:
+            total_price = self.price + used_car_fee['12-29']
+        else:
+            total_price = self.price + used_car_fee['30+']
+        return total_price
+
+    def is_new(self):
+        return self.new
+
+print("\n")
+
+toyota = car_register['toyotaBZ4X']
+toyota_car = Car(toyota['brand'], toyota['model'], toyota['price'], toyota['year'], toyota['month'], toyota['new'], toyota['km'])
+toyota_car.print_car_information()
+print(f"The total price for this {toyota_car.brand} {toyota_car.model} is {toyota_car.calculate_total_price()}kr.")
+print(f"Next EU-control for the {toyota_car.brand} {toyota_car.model} is {toyota_car.next_eu_control()}")
+print(f"If you want to rent the {toyota_car.brand} {toyota_car.model} the monthly fee will be {toyota_car.rent_car_monthly_price()}kr.")
