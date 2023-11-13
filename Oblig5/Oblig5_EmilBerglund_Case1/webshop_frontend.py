@@ -19,7 +19,7 @@ all_wares = {
     "hdmi_cable": {
         "name": "Belkin Ultra High Speed HDMI Cable - 2m",
         "price": 349.0,
-        "number_in_stock": 3,
+        "number_in_stock": 31,
         "ratings": [5.0, 5.0, 4.5, 5.0, 5.0, 5.0],
         "description": "A high speed overprices HDMI cable!",
     }
@@ -40,13 +40,13 @@ shopping_cart = {}
 # Forsøker å legge til 1 amd processor, 2 playstation 5 konsoller og 3 hdmi kabler
 ws.add_number_of_ware_to_shopping_cart("amd_processor", all_wares["amd_processor"], shopping_cart)
 ws.add_number_of_ware_to_shopping_cart("playstation_5", all_wares["playstation_5"], shopping_cart, 2)
-ws.add_number_of_ware_to_shopping_cart("hdmi_cable", all_wares["hdmi_cable"], shopping_cart, 4)
+ws.add_number_of_ware_to_shopping_cart("hdmi_cable", all_wares["hdmi_cable"], shopping_cart, 2)
 
 # skriver ut handlevognen
 print()
-print("The shopping cart: ", end="")
+print("The shopping cart: ", end="\n")
 for ware_key, amount in shopping_cart.items():
-    print(f"\n{all_wares[ware_key]['name']} - {amount} pcs. ")
+    print(f"{all_wares[ware_key]['name']} - {amount} pcs. ")
 print(f"\nTotal price of the shopping cart: {ws.calculate_shopping_cart_price(shopping_cart, all_wares, 1.25)} kr.")
 
 
@@ -58,4 +58,4 @@ ws.buy_shopping_cart(shopping_cart, all_wares, 1.25, wallet)
 print()
 
 # Skriver ut mengden penger i lommeboka etter kjøpet
-print(f"The amount in the wallet after the purchase: {wallet.get_amount()} kr.")
+print(f"The amount in the wallet is now {wallet.get_amount()} kr.")

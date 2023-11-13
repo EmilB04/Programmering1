@@ -70,12 +70,18 @@ def can_afford_shopping_cart(shopping_cart_price, wallet):
 
 def buy_shopping_cart(shopping_cart, all_wares, tax, wallet):
     shopping_cart_value = calculate_shopping_cart_price(shopping_cart, all_wares, tax)
-    # Finn totalprisen av handlevognen og trekk fra i wallet.
-    total_subtraction = wallet.get_amount() - shopping_cart_value
-    # Oppdaterer lommeboken
-    wallet.subtract_amount(total_subtraction)
-    # Tømmer handlevognen etter kjøp
-    clear_shopping_cart(shopping_cart)
+    while True:
+        if can_afford_shopping_cart(shopping_cart_value, wallet):
+            # Oppdaterer lommeboken
+            wallet.subtract_amount(shopping_cart_value)
+            # Tømmer handlevognen etter kjøp
+            clear_shopping_cart(shopping_cart)
+            print("The items have been purchased.")
+            break
+        else:
+            print("ERROR: Not enough money in wallet.")
+            print("The items have not been purchased.")
+            break
 
 #------------------------------------------
 # Predefinerte funksjoner
