@@ -1,16 +1,11 @@
-#------------------------------------------
-#Oppgaver
-#------------------------------------------
-
-# TODO!
-# Fix wallet funksjon - Amount left in wallet
+# AUTHOR EMIL BERGLUND #
 
 def print_ware_information(ware):
     '''Funksjonsbeskrivelse: Printer ut informasjon om en spesifisert vare.'''
     print(f"\nName: {ware['name']}")
     print(f"Price: {ware['price']}")
     print(f"Number in stock: {ware['number_in_stock']}")
-    print(f"Description: {ware['description']}")
+    print(f"DesScription: {ware['description']}")
 
 def calculate_average_ware_rating(ware):
     ''''Returnerer den gjennomsnittlige ratingen for en spesifisert vare.'''

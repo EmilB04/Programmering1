@@ -1,3 +1,5 @@
+# AUTHOR EMIL BERGLUND #
+
 import webshop as ws
 from wallet import *
 
