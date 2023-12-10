@@ -84,23 +84,22 @@ def rent_car_monthly_price(car):
 
 
 def calculate_total_price(car):
-    NEW_CAR_FEE = 10_783
-    USED_CAR_FEE = {
-        "0-3"   : 6681,
-        "4-11"  : 4034,
-        "12-29" : 1729,
-        "30+"   : 0
-    }
-    if car == is_new(car):
-        total_price = car['price'] + NEW_CAR_FEE
-    elif get_car_age(car) <= 3:
-        total_price = car['price'] + USED_CAR_FEE['0-3']
-    elif get_car_age(car) <= 11:
-        total_price = car['price'] + USED_CAR_FEE['4-11']
-    elif get_car_age(car) <= 29:
-        total_price = car['price'] + USED_CAR_FEE['12-29']
+    car_age = get_car_age(car)
+    car_price = car["price"]
+
+    NEW_CAR_FEE = 8745
+    USED_CAR_FEE = {"0-3": 6681, "4-11": 4034, "12-29": 1729, "30+": 0}
+    if is_new(car):
+        total_price = car_price + NEW_CAR_FEE
+        return total_price
+    if car_age <= 3 and car_age >= 0:
+        total_price = car_price + USED_CAR_FEE["0-3"]
+    elif car_age <= 11:
+        total_price = car_price + USED_CAR_FEE["4-11"]
+    elif car_age <= 29:
+        total_price = car_price + USED_CAR_FEE["12-29"]
     else:
-        total_price = car['price'] + USED_CAR_FEE['30+']
+        total_price = car_price + USED_CAR_FEE["30+"]
     return total_price
 
 
